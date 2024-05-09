@@ -4,6 +4,13 @@ import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
 const Login = () => {
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password);
+      };
   return (
     <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
       <div className="hidden mx-6 my-6 lg:block lg:w-[45%]">
@@ -12,7 +19,7 @@ const Login = () => {
 
       <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
         <h2 className="text-center mx-auto text-2xl font-bold">Login Now!</h2>
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
               Email Address
@@ -22,6 +29,7 @@ const Login = () => {
               type="email"
               placeholder="Enter your email"
               name="email"
+              required
             />
           </div>
 
@@ -35,6 +43,7 @@ const Login = () => {
               type="password"
               placeholder="Enter your password"
               name="password"
+              required
             />
           </div>
           <div className="mt-6">
