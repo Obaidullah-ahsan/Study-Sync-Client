@@ -2,15 +2,32 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/Logo/undraw_access_account_re_8spm.svg";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
-    const handleLogin = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email,password);
-      };
+  const { loginUser } = useAuth();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          title: "Success",
+          text: "User Login Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        form.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
       <div className="hidden mx-6 my-6 lg:block lg:w-[45%]">
@@ -74,7 +91,7 @@ const Login = () => {
             type="button"
             className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
           >
-            <FaGithub size={20}/>
+            <FaGithub size={20} />
             <span className="hidden mx-2 sm:inline">Github</span>
           </button>
         </div>

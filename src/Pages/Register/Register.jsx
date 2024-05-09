@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/Logo/undraw_sign_up_n6im.svg";
 import useAuth from "../../Hooks/useAuth";
+import { updateProfile } from "firebase/auth";
+import auth from "../../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -14,7 +17,19 @@ const Register = () => {
     console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
+        updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
+          .then(() => {})
+          .catch((error) => {
+            console.log(error);
+          });
         console.log(result.user);
+        Swal.fire({
+          title: "Success",
+          text: "User Register Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        form.reset()
       })
       .catch((error) => {
         console.log(error.message);
