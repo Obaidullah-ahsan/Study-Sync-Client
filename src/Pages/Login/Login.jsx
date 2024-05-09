@@ -6,7 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { loginUser } = useAuth();
+  const { loginUser, googleLogin, githubLogin } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +23,25 @@ const Login = () => {
           confirmButtonText: "Ok",
         });
         form.reset();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        console.log(result.user);
       })
       .catch((error) => {
         console.log(error);
@@ -81,6 +100,7 @@ const Login = () => {
 
         <div className=" flex items-center mt-6 -mx-2">
           <button
+            onClick={handleGoogleLogin}
             type="button"
             className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
           >
@@ -88,6 +108,7 @@ const Login = () => {
             <span className="hidden mx-2 sm:inline">Google</span>
           </button>
           <button
+            onClick={handleGithubLogin}
             type="button"
             className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
           >

@@ -21,25 +21,22 @@ const Footer = () => {
               </div>
             </div>
             <div className="mt-6 lg:mt-0 lg:flex-1">
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-3 gap-6 ">
                 <div>
                   <h3 className="text-gray-700 uppercase dark:text-white">
                     About
                   </h3>
                   <a
-                    href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     Company
                   </a>
                   <a
-                    href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     community
                   </a>
                   <a
-                    href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     Careers
@@ -50,19 +47,16 @@ const Footer = () => {
                     Products
                   </h3>
                   <a
-                    href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     Mega cloud
                   </a>
                   <a
-                    href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     Aperion UI
                   </a>
                   <a
-                    href="#"
                     className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
                   >
                     Meraki UI
@@ -74,7 +68,6 @@ const Footer = () => {
                   </h3>
                   <div className="flex mt-3 -mx-2">
                     <a
-                      href="#"
                       className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                       aria-label="Reddit"
                     >
@@ -89,7 +82,6 @@ const Footer = () => {
                     </a>
 
                     <a
-                      href="#"
                       className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                       aria-label="Facebook"
                     >
@@ -104,7 +96,6 @@ const Footer = () => {
                     </a>
 
                     <a
-                      href="#"
                       className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
                       aria-label="Github"
                     >

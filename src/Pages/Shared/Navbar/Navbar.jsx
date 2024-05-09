@@ -1,19 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/">Assignments</Link>
+        <NavLink to="/assignments">Assignments</NavLink>
       </li>
       <li>
-        <Link to="/">Create Assignments</Link>
+        <NavLink to="/createassignments">Create Assignments</NavLink>
       </li>
       <li>
-        <Link to="/">Pending Assignments</Link>
+        <NavLink to="/pendingassignments">Pending Assignments</NavLink>
       </li>
     </>
   );
