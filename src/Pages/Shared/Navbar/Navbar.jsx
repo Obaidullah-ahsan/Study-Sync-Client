@@ -52,8 +52,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="justify-end flex gap-3 ml-5">
-        <a className="btn min-h-10 h-10 bg-[#5FCF80] text-base">Login</a>
-        <a className="btn min-h-10 h-10 bg-[#5FCF80] text-base">Register</a>
+        <Link to="/login" className="btn min-h-10 h-10 bg-[#5FCF80] text-base">Login</Link>
+        <Link to="/register" className="btn min-h-10 h-10 bg-[#5FCF80] text-base">Register</Link>
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
