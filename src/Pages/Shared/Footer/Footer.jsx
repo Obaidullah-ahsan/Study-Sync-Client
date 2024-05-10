@@ -6,17 +6,10 @@ const Footer = () => {
           <div className="lg:flex lg:gap-36">
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6">
-                <a>
-                  <img
-                    className="w-auto h-7"
-                    src="https://merakiui.com/images/full-logo.svg"
-                    alt=""
-                  />
-                </a>
-
+                <h2 className="text-2xl font-bold">Study Sync</h2>
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-white">
-                  Join 31,000+ other and never miss out on new tips, tutorials,
-                  and more.
+                  Our platform empowers students to engage in group study
+                  assignments seamlessly.
                 </p>
               </div>
             </div>
@@ -26,19 +19,13 @@ const Footer = () => {
                   <h3 className="text-gray-700 uppercase dark:text-white">
                     About
                   </h3>
-                  <a
-                    className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                  >
+                  <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     Company
                   </a>
-                  <a
-                    className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                  >
+                  <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     community
                   </a>
-                  <a
-                    className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                  >
+                  <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     Careers
                   </a>
                 </div>
@@ -46,26 +33,18 @@ const Footer = () => {
                   <h3 className="text-gray-700 uppercase dark:text-white">
                     Products
                   </h3>
-                  <a
-                    className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                  >
+                  <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     Mega cloud
                   </a>
-                  <a
-                    className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                  >
+                  <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     Aperion UI
                   </a>
-                  <a
-                    className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline"
-                  >
+                  <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
                     Meraki UI
                   </a>
                 </div>
                 <div>
-                <h3 className="text-gray-700 dark:text-white">
-                    Social Link
-                  </h3>
+                  <h3 className="text-gray-700 dark:text-white">Social Link</h3>
                   <div className="flex mt-3 -mx-2">
                     <a
                       className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
@@ -118,7 +97,7 @@ const Footer = () => {
 
           <div>
             <p className="text-center text-gray-500 dark:text-gray-400">
-              © Brand 2020 - All rights reserved
+              © Study Sync 2020 - All rights reserved
             </p>
           </div>
         </div>

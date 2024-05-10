@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Banner.css";
 
 const Banner = () => {
@@ -14,7 +15,7 @@ const Banner = () => {
           challenges and unlock new realms of knowledge.
         </p>
         <div>
-          <a className="btn w-32 text-white border-none bg-[#5FCF80] text-base">Login</a>
+          <Link to="/assignment" className="btn w-32 text-white border-none bg-[#5FCF80] text-base">Assignment</Link>
         </div>
       </div>
     </div>

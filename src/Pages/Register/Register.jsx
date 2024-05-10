@@ -41,7 +41,7 @@ const Register = () => {
       });
   };
   return (
-    <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
+    <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-base-100 rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
       <div className="hidden mt-28 mx-6 lg:block lg:w-1/2">
         <img src={logo} alt="" />
       </div>
