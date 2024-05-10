@@ -14,7 +14,6 @@ const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photo, email, password);
     createUser(email, password)
       .then((result) => {
         updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
@@ -29,10 +28,16 @@ const Register = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
-        form.reset()
+        form.reset();
       })
       .catch((error) => {
         console.log(error.message);
+        Swal.fire({
+          title: "Error!",
+          text: error.code.slice(5, 50),
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
       });
   };
   return (

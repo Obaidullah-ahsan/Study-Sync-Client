@@ -12,7 +12,6 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -26,6 +25,12 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          title: "Error!",
+          text: error.code.slice(5, 50),
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
       });
   };
 
@@ -33,22 +38,46 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          title: "Success",
+          text: "User Login Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          title: "Error!",
+          text: error.code.slice(5, 50),
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
       });
   };
   const handleGithubLogin = () => {
     githubLogin()
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          title: "Success",
+          text: "User Login Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          title: "Error!",
+          text: error.code.slice(5, 50),
+          icon: "error",
+          confirmButtonText: "Try again",
+        });
       });
   };
   return (
-    <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
+    <div className="flex w-full my-12 max-w-sm mx-auto overflow-hidden bg-base-100 rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-5xl">
       <div className="hidden mx-6 my-6 lg:block lg:w-[45%]">
         <img src={logo} alt="" />
       </div>

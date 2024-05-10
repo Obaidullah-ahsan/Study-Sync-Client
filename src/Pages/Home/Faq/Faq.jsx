@@ -5,7 +5,7 @@ const Faq = () => {
         Frequently Asked Questions
       </h1>
       <p className="border-2 w-28 mt-6 rounded-xl border-cyan-800 text-center mx-auto"></p>
-      <div className="space-y-4 mt-10 mx-36">
+      <div className="space-y-4 mt-10 mx-4 lg:mx-36">
         <details className="w-full border rounded-lg" open="">
           <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
             How do I create an assignment on the platform?
