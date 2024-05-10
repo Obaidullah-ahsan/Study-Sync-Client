@@ -3,8 +3,10 @@ import DatePicker from "react-datepicker";
 import "./CreateAssignments.css";
 import "react-datepicker/dist/react-datepicker.css";
 import createLogo from "../../assets/Logo/create.svg";
+import useAuth from "../../Hooks/useAuth";
 
 const CreateAssignments = () => {
+  const { user } = useAuth();
   const [date, setDate] = useState(new Date());
   const [difficulty, setDifficulty] = useState();
 
@@ -19,18 +21,30 @@ const CreateAssignments = () => {
     const thumbnail = form.thumbnail.value;
     const marks = form.marks.value;
     const description = form.description.value;
-    console.log(title, thumbnail, marks, description, difficulty, date);
+    const creatorEmail = user?.email;
+    const newAssignment = {
+      title,
+      thumbnail,
+      marks,
+      description,
+      difficulty,
+      date,
+      creatorEmail,
+    };
+    console.log(newAssignment);
   };
 
   return (
     <div className="mx-6 md:mx-12 lg:mx-28 px-6 md:px-12 my-10 py-8 bg-base-200 rounded-xl">
       <div className="flex">
         <div className="w-[43%] mt-16 hidden lg:block">
-            <img src={createLogo} alt="" />
+          <img src={createLogo} alt="" />
         </div>
         <div className="flex-1">
           <form onSubmit={handleAssignmentsSubmit}>
-            <h3 className="text-3xl font-semibold text-center mx-auto mb-6">Create Assignments</h3>
+            <h3 className="text-3xl font-semibold text-center mx-auto mb-6">
+              Create Assignments
+            </h3>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
