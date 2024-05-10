@@ -3,7 +3,7 @@ import errorLogo from "../../assets/Logo/page_not_found.svg"
 const ErrorPage = () => {
   return (
     <div className="lg:mx-12">
-      <section className="bg-white dark:bg-gray-900 ">
+      <section className="bg-base-100 dark:bg-gray-900 ">
         <div className="container min-h-screen px-6 py-12 mx-auto lg:flex lg:items-center lg:gap-8">
           <div className="wf-ull lg:w-1/2">
             <p className="text-sm font-medium text-blue-500 dark:text-blue-400">

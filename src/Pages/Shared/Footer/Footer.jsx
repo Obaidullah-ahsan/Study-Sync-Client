@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="mt-6 lg:mt-0 lg:flex-1">
               <div className="grid grid-cols-3 gap-6 ">
                 <div>
-                  <h3 className="text-gray-700 uppercase dark:text-white">
+                  <h3 className="text-gray-700 font-bold uppercase dark:text-white">
                     About
                   </h3>
                   <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
@@ -30,7 +30,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <div>
-                  <h3 className="text-gray-700 uppercase dark:text-white">
+                  <h3 className="text-gray-700 uppercase font-bold dark:text-white">
                     Products
                   </h3>
                   <a className="block mt-2 text-sm text-gray-600 dark:text-gray-400 hover:underline">
@@ -44,7 +44,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <div>
-                  <h3 className="text-gray-700 dark:text-white">Social Link</h3>
+                  <h3 className="text-gray-700 font-bold uppercase dark:text-white">Social Link</h3>
                   <div className="flex mt-3 -mx-2">
                     <a
                       className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
