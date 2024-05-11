@@ -4,15 +4,23 @@ import "./CreateAssignments.css";
 import "react-datepicker/dist/react-datepicker.css";
 import createLogo from "../../assets/Logo/create.svg";
 import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const CreateAssignments = () => {
   const { user } = useAuth();
   const [date, setDate] = useState(new Date());
   const [difficulty, setDifficulty] = useState();
 
-  const handleSelect = (e) => {
+  const handleSelectDifficulty = (e) => {
     setDifficulty(e.target.value);
   };
+
+  const options = [
+    { value: "Easy", label: "Easy" },
+    { value: "Medium", label: "Medium" },
+    { value: "Hard", label: "Hard" },
+  ];
 
   const handleAssignmentsSubmit = (e) => {
     e.preventDefault();
@@ -31,6 +39,19 @@ const CreateAssignments = () => {
       date,
       creatorEmail,
     };
+    axios
+      .post("http://localhost:5000/assignments", newAssignment)
+      .then((res) => {
+        console.log(res.data);
+        if (res?.data?.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "Assignment Create Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+        }
+      });
     console.log(newAssignment);
   };
 
@@ -99,15 +120,18 @@ const CreateAssignments = () => {
                   Difficulty level
                 </label>
                 <select
-                  onChange={handleSelect}
-                  className="rounded-md p-3 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300 py-2 w-full"
+                  defaultValue="DEFAULT"
+                  onChange={handleSelectDifficulty}
+                  className="select min-h-10 h-10 mt-1 select-bordered w-full"
                 >
-                  <option disabled selected>
-                    Select difficulty level
+                  <option value="DEFAULT" disabled>
+                    Select Difficulty
                   </option>
-                  <option>Easy</option>
-                  <option>Medium</option>
-                  <option>Hard</option>
+                  {options.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="col-span-full">
