@@ -1,9 +1,17 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const ViewAssignmentDetails = () => {
   const loadedAssignment = useLoaderData();
-  const { _id, title, thumbnail, marks, description, difficulty, date } =
+  const { title, thumbnail, marks, description, difficulty, date } =
     loadedAssignment;
+
+  const handleSubmitModal = (e) => {
+    const form = e.target;
+    const pdflink = form.pdflink.value;
+    const quicknote = form.quicknote.value;
+    console.log(pdflink, quicknote);
+    form.reset();
+  };
 
   return (
     <div className="my-4 md:my-12 md:mx-8 lg:mx-20">
@@ -40,12 +48,55 @@ const ViewAssignmentDetails = () => {
           </div>
           <div className="flex justify-end p-4">
             <div>
-              <Link
-                to={`/viewassignmentsdetails/${_id}`}
+              <button
                 className="btn min-h-10 h-10 bg-[#5FCF80] text-white"
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
               >
                 Take assignment
-              </Link>
+              </button>
+              <dialog
+                id="my_modal_5"
+                className="modal modal-bottom sm:modal-middle"
+              >
+                <div className="modal-box bg-base-200">
+                  <h3 className="font-bold text-2xl text-center mx-auto">
+                    Submit Assignment
+                  </h3>
+                  <div className="modal-action justify-center">
+                    <form
+                      onSubmit={handleSubmitModal}
+                      className="flex flex-col gap-4"
+                      method="dialog"
+                    >
+                      <div>
+                        <label className="text-sm">PDF/doc link</label>
+                        <input
+                          type="text"
+                          placeholder="PDF/doc link"
+                          name="pdflink"
+                          required
+                          className="w-full rounded-md p-2 mt-2 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <label className="text-sm">Quick note</label>
+                        <textarea
+                          className="textarea textarea-bordered"
+                          placeholder="Quick note"
+                          name="quicknote"
+                          required
+                        ></textarea>
+                      </div>
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn min-h-10 h-10 bg-[#5FCF80] text-white">
+                        Submit
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </dialog>
             </div>
           </div>
         </div>
