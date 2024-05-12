@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/Logo/undraw_access_account_re_8spm.svg";
 import { FaGoogle } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser, googleLogin, githubLogin } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -21,6 +23,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        navigate(location?.state ? location.state : "/");
         form.reset();
       })
       .catch((error) => {
@@ -44,6 +47,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error);
@@ -65,6 +69,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error);
