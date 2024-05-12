@@ -2,17 +2,25 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import updateLogo from "../../assets/Logo/undraw_updates_re_o5af.svg";
-import useAuth from "../../Hooks/useAuth";
-import axios from "axios";
-import Swal from "sweetalert2";
+// import useAuth from "../../Hooks/useAuth";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateAssignments = () => {
-  const { user } = useAuth();
-  const [date, setDate] = useState(new Date());
-  const [difficulty, setDifficulty] = useState();
+  const loadedAssignment = useLoaderData();
+  const {
+    title,
+    thumbnail,
+    marks,
+    description,
+    difficulty,
+    date,
+  } = loadedAssignment;
+//   const { user } = useAuth();
+  const [updateDate, setUpdateDate] = useState(date);
+  const [updateDifficulty, setUpdateDifficulty] = useState();
 
   const handleSelectDifficulty = (e) => {
-    setDifficulty(e.target.value);
+    setUpdateDifficulty(e.target.value);
   };
 
   const options = [
@@ -24,35 +32,21 @@ const UpdateAssignments = () => {
   const handleAssignmentsSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const title = form.title.value;
-    const thumbnail = form.thumbnail.value;
-    const marks = form.marks.value;
-    const description = form.description.value;
-    const creatorEmail = user?.email;
-    const newAssignment = {
-      title,
-      thumbnail,
-      marks,
-      description,
-      difficulty,
-      date,
-      creatorEmail,
+    const updateTitle = form.title.value;
+    const updateThumbnail = form.thumbnail.value;
+    const updateMarks = form.marks.value;
+    const updateDescription = form.description.value;
+    const updateAssignment = {
+      title : updateTitle,
+      thumbnail : updateThumbnail,
+      marks : updateMarks,
+      description : updateDescription,
+      difficulty: updateDifficulty,
+      date : updateDate,
     };
-    axios
-      .post("http://localhost:5000/assignments", newAssignment)
-      .then((res) => {
-        console.log(res.data);
-        if (res?.data?.insertedId) {
-          Swal.fire({
-            title: "Success",
-            text: "Assignment Create Successfully",
-            icon: "success",
-            confirmButtonText: "Ok",
-          });
-        }
-      });
-    console.log(newAssignment);
+    console.log(updateAssignment);
   };
+  console.log(loadedAssignment);
 
   return (
     <div className="mx-6 md:mx-12 lg:mx-28 px-6 md:px-12 my-10 py-8 bg-base-200 rounded-xl">
@@ -75,6 +69,7 @@ const UpdateAssignments = () => {
                   placeholder="Title"
                   name="title"
                   required
+                  defaultValue={title}
                   className="w-full rounded-md p-2 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
               </div>
@@ -87,6 +82,7 @@ const UpdateAssignments = () => {
                   placeholder="Thumbnail Image URL"
                   name="thumbnail"
                   required
+                  defaultValue={thumbnail}
                   className="w-full rounded-md p-2 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
               </div>
@@ -99,6 +95,7 @@ const UpdateAssignments = () => {
                   placeholder="Marks"
                   name="marks"
                   required
+                  defaultValue={marks}
                   className="w-full rounded-md p-2 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
               </div>
@@ -109,8 +106,9 @@ const UpdateAssignments = () => {
                 <div className="myContainer">
                   <DatePicker
                     className="rounded-md p-2 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-                    selected={date}
-                    onChange={(date) => setDate(date)}
+                    selected={updateDate}
+                    selectedDates={date}
+                    onChange={(date) => setUpdateDate(date)}
                   />
                 </div>
               </div>
@@ -119,7 +117,7 @@ const UpdateAssignments = () => {
                   Difficulty level
                 </label>
                 <select
-                  defaultValue="DEFAULT"
+                  defaultValue={difficulty}
                   onChange={handleSelectDifficulty}
                   className="select min-h-10 h-10 mt-1 select-bordered w-full"
                 >
@@ -142,6 +140,7 @@ const UpdateAssignments = () => {
                   placeholder="Description"
                   name="description"
                   required
+                  defaultValue={description}
                   className="w-full rounded-md p-2 focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
               </div>
