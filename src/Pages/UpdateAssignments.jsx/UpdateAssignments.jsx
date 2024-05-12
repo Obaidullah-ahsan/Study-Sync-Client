@@ -46,7 +46,6 @@ const UpdateAssignments = () => {
     };
     console.log(updateAssignment);
   };
-  console.log(loadedAssignment);
 
   return (
     <div className="mx-6 md:mx-12 lg:mx-28 px-6 md:px-12 my-10 py-8 bg-base-200 rounded-xl">
