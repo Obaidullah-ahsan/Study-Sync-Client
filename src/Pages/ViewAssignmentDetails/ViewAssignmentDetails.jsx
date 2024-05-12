@@ -4,6 +4,7 @@ const ViewAssignmentDetails = () => {
   const loadedAssignment = useLoaderData();
   const { _id, title, thumbnail, marks, description, difficulty, date } =
     loadedAssignment;
+
   return (
     <div className="my-4 md:my-12 md:mx-8 lg:mx-20">
       <div className="overflow-hidden flex flex-col md:flex-row bg-base-100 dark:bg-gray-800">

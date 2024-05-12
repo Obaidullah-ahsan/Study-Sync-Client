@@ -3,21 +3,17 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import updateLogo from "../../assets/Logo/undraw_updates_re_o5af.svg";
 // import useAuth from "../../Hooks/useAuth";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdateAssignments = () => {
   const loadedAssignment = useLoaderData();
-  const {
-    title,
-    thumbnail,
-    marks,
-    description,
-    difficulty,
-    date,
-  } = loadedAssignment;
-//   const { user } = useAuth();
+  const navigate = useNavigate();
+  const { _id, title, thumbnail, marks, description, difficulty, date } =
+    loadedAssignment;
   const [updateDate, setUpdateDate] = useState(date);
-  const [updateDifficulty, setUpdateDifficulty] = useState();
+  const [updateDifficulty, setUpdateDifficulty] = useState(difficulty);
 
   const handleSelectDifficulty = (e) => {
     setUpdateDifficulty(e.target.value);
@@ -29,7 +25,7 @@ const UpdateAssignments = () => {
     { value: "Hard", label: "Hard" },
   ];
 
-  const handleAssignmentsSubmit = (e) => {
+  const handleUpdateAssignments = (e) => {
     e.preventDefault();
     const form = e.target;
     const updateTitle = form.title.value;
@@ -37,14 +33,35 @@ const UpdateAssignments = () => {
     const updateMarks = form.marks.value;
     const updateDescription = form.description.value;
     const updateAssignment = {
-      title : updateTitle,
-      thumbnail : updateThumbnail,
-      marks : updateMarks,
-      description : updateDescription,
+      title: updateTitle,
+      thumbnail: updateThumbnail,
+      marks: updateMarks,
+      description: updateDescription,
       difficulty: updateDifficulty,
-      date : updateDate,
+      date: updateDate,
     };
-    console.log(updateAssignment);
+    axios
+      .put(`http://localhost:5000/assignment/${_id}`, updateAssignment)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.matchedCount) {
+          Swal.fire({
+            title: "Error!",
+            text: "You have not changed any value. Please change value then update.",
+            icon: "error",
+            confirmButtonText: "Try again",
+          });
+        }
+        if (res.data.modifiedCount) {
+          Swal.fire({
+            title: "Success",
+            text: "Assignment Update Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+          navigate("/assignments");
+        }
+      });
   };
 
   return (
@@ -54,7 +71,7 @@ const UpdateAssignments = () => {
           <img src={updateLogo} alt="" />
         </div>
         <div className="flex-1">
-          <form onSubmit={handleAssignmentsSubmit}>
+          <form onSubmit={handleUpdateAssignments}>
             <h3 className="text-3xl font-semibold text-center mx-auto mb-6">
               Update Assignments
             </h3>

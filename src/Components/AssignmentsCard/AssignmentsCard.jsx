@@ -84,7 +84,7 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
               {title}
             </h2>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              {description.slice(0, 140)}...
+              {description?.slice(0, 140)}...
             </p>
           </div>
         </div>
