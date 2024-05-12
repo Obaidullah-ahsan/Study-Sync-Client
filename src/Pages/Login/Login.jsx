@@ -139,7 +139,7 @@ const Login = () => {
             className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
           >
             <FaGoogle size={20} />
-            <span className="hidden mx-2 sm:inline">Google</span>
+            <span className="mx-2">Google</span>
           </button>
           <button
             onClick={handleGithubLogin}
@@ -147,7 +147,7 @@ const Login = () => {
             className="flex items-center justify-center w-full px-6 py-2 mx-2 text-sm font-medium text-white transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:bg-blue-400 focus:outline-none"
           >
             <FaGithub size={20} />
-            <span className="hidden mx-2 sm:inline">Github</span>
+            <span className="mx-2">Github</span>
           </button>
         </div>
         <p className="mt-8 text-xs font-light text-center text-gray-400">

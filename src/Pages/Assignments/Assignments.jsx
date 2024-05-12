@@ -5,13 +5,13 @@ import AssignmentsCard from "../../Components/AssignmentsCard/AssignmentsCard";
 const Assignments = () => {
   const [assignments, setAssignments] = useState([]);
   const [difficulty, setDifficulty] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     axios.get("http://localhost:5000/assignments").then((res) => {
       setAssignments(res.data);
-      setLoading(false);
+      // setLoading(false);
     });
   }, [difficulty]);
 
@@ -35,7 +35,7 @@ const Assignments = () => {
 
   console.log(difficulty);
   return (
-    <div className="my-10 mx-20">
+    <div className="mx-10 my-8 md:my-10 md:mx-20">
       <h1 className="text-4xl font-semibold text-center mx-auto mb-5">
         Assignmnent
       </h1>

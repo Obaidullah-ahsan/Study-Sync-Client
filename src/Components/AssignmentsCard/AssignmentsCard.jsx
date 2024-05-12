@@ -96,7 +96,7 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
             >
               <MdDeleteForever color="red" title="Delete" size={30} />
             </button>
-            <Link className="btn bg-[#5FCF80] min-h-10 h-10">
+            <Link to="/updateassignments" className="btn bg-[#5FCF80] min-h-10 h-10">
               <CiEdit color="white" title="Update" size={30} />
             </Link>
           </div>
