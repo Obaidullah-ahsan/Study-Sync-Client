@@ -14,7 +14,6 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
     marks,
     description,
     difficulty,
-    date,
     creatorEmail,
   } = assignment;
   const handleDelete = (id, creatorEmail) => {

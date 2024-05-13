@@ -1,7 +1,11 @@
 import { useLoaderData } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ViewAssignmentDetails = () => {
   const loadedAssignment = useLoaderData();
+  const { user } = useAuth();
   const { title, thumbnail, marks, description, difficulty, date } =
     loadedAssignment;
 
@@ -9,8 +13,33 @@ const ViewAssignmentDetails = () => {
     const form = e.target;
     const pdflink = form.pdflink.value;
     const quicknote = form.quicknote.value;
+    const name = user?.displayName;
+    const email = user?.email;
     console.log(pdflink, quicknote);
-    form.reset();
+    const submitAssignment = {
+      pdflink,
+      quicknote,
+      title,
+      marks,
+      name,
+      email,
+      status: "Pending",
+    };
+    axios
+      .post("http://localhost:5000/submitassignments", submitAssignment)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            title: "Success",
+            text: "Assignment Submitted Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+          form.reset();
+        }
+      });
+    console.log(submitAssignment);
   };
 
   return (

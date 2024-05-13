@@ -130,9 +130,9 @@ const Navbar = () => {
               <li>
                 <Link
                   className="btn min-h-8 h-8 text-white bg-[#5FCF80]"
-                  to="/"
+                  to={`/mysubmittedassignment/${user?.email}`}
                 >
-                  My Attempted Assignments
+                  My Submitted Assignments
                 </Link>
               </li>
               <li>

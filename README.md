@@ -1,8 +1,15 @@
-# React + Vite
+- Live site URL [@Study Sync](https://study-sync-97408.web.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Study Sync
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+- **Home**:- The Home page offers a welcoming interface, displaying popular tourist destinations and quick access to all application features.
+- **Add Tourist Spot**:- This page allows users to add new tourist spots to the database.
+- **All Tourist Spots:-** View a list of all tourist spots stored in the database.
+- **My List:-** Users can view all tourist spots they have added. This section allows users to edit or delete their own entries, facilitating easy management of content they've contributed.
+- **View Details page:-** Detailed view of a tourist spot. This page shows detailed information about the tourist spot, including large photos, detailed descriptions, directions.
+
+
+#### Selected category's name:- assignment_category_0001
+#### Website Themes: Online Group-Study assignment
