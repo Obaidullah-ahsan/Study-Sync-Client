@@ -1,7 +1,53 @@
-import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const PendingAssignments = () => {
-  const loadPendingAssignments = useLoaderData();
+  const [id, setId] = useState(null);
+  const [pdflink, setPdflink] = useState(null);
+  const [quicknote, setQuicknote] = useState(null);
+
+  const { data: loadPendingAssignments, refetch } = useQuery({
+    queryKey: ["pendingAssignments"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/submitassignments");
+      return res.json();
+    },
+  });
+
+  const handleGiveMark = (id) => {
+    axios.get(`http://localhost:5000/pendingassignment/${id}`).then((res) => {
+      console.log(res.data);
+    });
+  };
+  const submitMark = (e) => {
+    const form = e.target;
+    const marks = form.marks.value;
+    const feedback = form.feedback.value;
+    const giveMark = {
+      obtained_marks: marks,
+      status: "Completed",
+      feedback,
+    };
+    axios
+      .put(`http://localhost:5000/pendingassignment/${id}`, giveMark)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.modifiedCount) {
+          Swal.fire({
+            title: "Success",
+            text: "Assignment Update Successfully",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+          form.reset();
+          refetch();
+          // navigate("/assignments");
+        }
+      });
+  };
+
   return (
     <div className="container px-4 mx-auto mb-8">
       <h2 className="text-3xl text-center mx-auto my-8 font-bold text-gray-800 dark:text-white">
@@ -76,16 +122,20 @@ const PendingAssignments = () => {
                       </td>
 
                       <td className="px-10 py-4 text-sm font-medium whitespace-nowrap">
-                        <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                        <div className="inline px-3 py-1 text-sm font-normal rounded-full text-blue-600 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                           {pendingAssignment?.status}
                         </div>
                       </td>
                       <td className="px-10 py-4 text-sm font-medium whitespace-nowrap">
                         <button
                           className="btn min-h-10 h-10 bg-[#5FCF80] text-white"
-                          onClick={() =>
-                            document.getElementById("my_modal_5").showModal()
-                          }
+                          onClick={() => {
+                            document.getElementById("my_modal_5").showModal();
+                            handleGiveMark(pendingAssignment?._id);
+                            setId(pendingAssignment?._id);
+                            setPdflink(pendingAssignment?.pdflink);
+                            setQuicknote(pendingAssignment?.quicknote);
+                          }}
                         >
                           Give mark
                         </button>
@@ -99,13 +149,31 @@ const PendingAssignments = () => {
                             </h3>
                             <div className="modal-action justify-center">
                               <form
+                                onSubmit={submitMark}
                                 className="flex flex-col gap-3"
                                 method="dialog"
                               >
                                 <div className="flex flex-col">
+                                  <label className="text-sm">PDF Link</label>
+                                  <iframe
+                                  width="450" height="300"
+                                  className="mt-2 max-w-[350px] md:max-w-[450px] max-h-[300px]"
+                                    src={pdflink}
+                                    title="Pdf link"
+                                  ></iframe>
+                                </div>
+                                <div className="flex flex-col">
+                                  <label className="text-sm">Quick Note</label>
+                                  <input
+                                    defaultValue={quicknote}
+                                    disabled
+                                    className="w-full rounded-md p-2 dark:text-gray-50 dark:border-gray-300"
+                                  />
+                                </div>
+                                <div className="flex flex-col">
                                   <label className="text-sm">Marks</label>
                                   <input
-                                    type="text"
+                                    type="number"
                                     placeholder="marks"
                                     name="marks"
                                     required
@@ -128,6 +196,9 @@ const PendingAssignments = () => {
                                 </button>
                               </form>
                             </div>
+                            <p className="text-center mx-auto mt-3">
+                              Press ESC key to close
+                            </p>
                           </div>
                         </dialog>
                       </td>

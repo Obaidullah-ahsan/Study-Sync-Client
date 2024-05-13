@@ -86,8 +86,20 @@ const MySubmittedAssignment = () => {
                       </td>
 
                       <td className="px-10 py-4 text-sm font-medium whitespace-nowrap">
-                        <div className="inline px-3 py-1 text-sm font-normal rounded-full text-emerald-500 gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
+                        <div className={`inline px-3 py-1 text-sm font-normal rounded-full ${submittedassignment?.status === "Completed"? "text-emerald-500 bg-emerald-100/60": "text-blue-600 bg-emerald-100/60"} dark:bg-gray-800`}>
                           {submittedassignment?.status}
+                        </div>
+                      </td>
+
+                      <td className="px-14 py-4 text-sm font-medium whitespace-nowrap">
+                        <div className="text-sm font-normal dark:bg-gray-800">
+                          {submittedassignment?.obtained_marks}
+                        </div>
+                      </td>
+                      
+                      <td className="px-12 py-4 text-sm font-medium whitespace-nowrap">
+                        <div className="text-sm font-normal dark:bg-gray-800">
+                          {submittedassignment?.feedback}
                         </div>
                       </td>
                     </tr>
