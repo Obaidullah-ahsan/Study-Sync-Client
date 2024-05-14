@@ -68,7 +68,9 @@ const AuthProvider = ({ children }) => {
           .post(
             "https://study-sync-website-server.vercel.app/logout",
             loggedUser,
-            { withCredentials: true }
+            {
+              withCredentials: true,
+            }
           )
           .then((res) => {
             console.log(res.data);

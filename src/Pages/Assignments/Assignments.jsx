@@ -4,18 +4,17 @@ import AssignmentsCard from "../../Components/AssignmentsCard/AssignmentsCard";
 
 const Assignments = () => {
   const [assignments, setAssignments] = useState([]);
-  const [difficulty, setDifficulty] = useState(null);
-  // const [loading, setLoading] = useState(false);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    // setLoading(true);
     axios
-      .get("https://study-sync-website-server.vercel.app/assignments")
+      .get(
+        `https://study-sync-website-server.vercel.app/assignments?filter=${filter}`
+      )
       .then((res) => {
         setAssignments(res.data);
-        // setLoading(false);
       });
-  }, [difficulty]);
+  }, [filter]);
 
   const options = [
     { value: "Easy", label: "Easy" },
@@ -23,19 +22,6 @@ const Assignments = () => {
     { value: "Hard", label: "Hard" },
   ];
 
-  const handleSelectDifficulty = (e) => {
-    const difficultyLevel = e.target.value;
-    setDifficulty(e.target.value);
-    if (difficulty) {
-      const filteredAssignments = assignments.filter(
-        (assignment) => assignment.difficulty === difficultyLevel
-      );
-      setAssignments(filteredAssignments);
-    }
-  };
-  console.log(assignments);
-
-  console.log(difficulty);
   return (
     <div className="mx-10 my-8 md:my-10 md:mx-20">
       <h1 className="text-4xl font-semibold text-center mx-auto mb-5">
@@ -44,7 +30,7 @@ const Assignments = () => {
       <div className="max-w-80 text-center mx-auto">
         <select
           defaultValue="DEFAULT"
-          onChange={handleSelectDifficulty}
+          onChange={(e) => setFilter(e.target.value)}
           className="select min-h-10 h-10 mt-1 select-bordered w-full"
         >
           <option value="DEFAULT" disabled>
