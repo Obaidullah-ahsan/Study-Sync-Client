@@ -42,27 +42,31 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/assignment/${id}`).then((res) => {
-            console.log(res.data);
-            if (res.data?.deletedCount) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your assignment has been deleted.",
-                icon: "success",
-              });
-              const remaining = assignments.filter(
-                (assign) => assign._id !== id
-              );
-              setAssignments(remaining);
-            }
-          });
+          axios
+            .delete(
+              `https://study-sync-website-server.vercel.app/assignment/${id}`
+            )
+            .then((res) => {
+              console.log(res.data);
+              if (res.data?.deletedCount) {
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your assignment has been deleted.",
+                  icon: "success",
+                });
+                const remaining = assignments.filter(
+                  (assign) => assign._id !== id
+                );
+                setAssignments(remaining);
+              }
+            });
         }
       });
     }
   };
   return (
     <div>
-      <div className="max-w-[350px] border overflow-hidden bg-white dark:bg-gray-800">
+      <div className="max-w-[350px] border overflow-hidden bg-base-200 dark:bg-gray-800">
         <img
           className="object-cover w-full h-44"
           src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -79,10 +83,10 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
                 {difficulty}
               </p>
             </div>
-            <h2 className="block mt-2 text-xl font-semibold text-gray-800 transition-colors duration-300 transform dark:text-white hover:text-[#5FCF80]">
+            <h2 className="block mt-2 text-xl font-semibold transition-colors duration-300 transform dark:text-white hover:text-[#5FCF80]">
               {title}
             </h2>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <p className="mt-2 text-sm dark:text-gray-400">
               {description?.slice(0, 140)}...
             </p>
           </div>
@@ -95,12 +99,18 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
             >
               <MdDeleteForever color="red" title="Delete" size={30} />
             </button>
-            <Link to={`/updateassignments/${_id}`} className="btn bg-[#5FCF80] min-h-10 h-10">
+            <Link
+              to={`/updateassignments/${_id}`}
+              className="btn bg-[#5FCF80] min-h-10 h-10"
+            >
               <CiEdit color="white" title="Update" size={30} />
             </Link>
           </div>
           <div>
-            <Link to={`/viewassignmentsdetails/${_id}`} className="btn min-h-10 h-10 bg-[#5FCF80] text-white">
+            <Link
+              to={`/viewassignmentsdetails/${_id}`}
+              className="btn min-h-10 h-10 bg-[#5FCF80] text-white"
+            >
               View Details
             </Link>
           </div>

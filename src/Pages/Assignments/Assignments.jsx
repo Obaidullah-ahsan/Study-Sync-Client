@@ -9,10 +9,12 @@ const Assignments = () => {
 
   useEffect(() => {
     // setLoading(true);
-    axios.get("http://localhost:5000/assignments").then((res) => {
-      setAssignments(res.data);
-      // setLoading(false);
-    });
+    axios
+      .get("https://study-sync-website-server.vercel.app/assignments")
+      .then((res) => {
+        setAssignments(res.data);
+        // setLoading(false);
+      });
   }, [difficulty]);
 
   const options = [

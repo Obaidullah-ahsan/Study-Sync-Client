@@ -41,7 +41,10 @@ const UpdateAssignments = () => {
       date: updateDate,
     };
     axios
-      .put(`http://localhost:5000/assignment/${_id}`, updateAssignment)
+      .put(
+        `https://study-sync-website-server.vercel.app/assignment/${_id}`,
+        updateAssignment
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.matchedCount) {

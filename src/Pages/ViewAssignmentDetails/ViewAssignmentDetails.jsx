@@ -26,7 +26,13 @@ const ViewAssignmentDetails = () => {
       status: "Pending",
     };
     axios
-      .post("http://localhost:5000/submitassignments", submitAssignment)
+      .post(
+        "https://study-sync-website-server.vercel.app/submitassignments",
+        submitAssignment,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

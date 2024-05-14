@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -20,34 +21,60 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   const loginUser = (email, password) => {
-    setLoading(true)
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   const googleLogin = () => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   const githubLogin = () => {
-    setLoading(true)
+    setLoading(true);
     return signInWithPopup(auth, githubProvider);
   };
 
   const logOut = () => {
-    setLoading(true)
+    setLoading(true);
     return signOut(auth);
   };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false)
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      console.log(currentUser);
+      if (currentUser) {
+        axios
+          .post(
+            "https://study-sync-website-server.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log("token respons", res.data);
+          });
+      } else {
+        axios
+          .post(
+            "https://study-sync-website-server.vercel.app/logout",
+            loggedUser,
+            { withCredentials: true }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
+      setLoading(false);
     });
     return () => {
       return unSubscribe();

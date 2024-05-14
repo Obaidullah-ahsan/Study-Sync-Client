@@ -15,7 +15,7 @@ const Banner = () => {
           challenges and unlock new realms of knowledge.
         </p>
         <div>
-          <Link to="/assignment" className="btn w-32 text-white border-none bg-[#5FCF80] text-base">Assignment</Link>
+          <Link to="/assignments" className="btn w-32 text-white border-none bg-[#5FCF80] text-base">Assignment</Link>
         </div>
       </div>
     </div>
