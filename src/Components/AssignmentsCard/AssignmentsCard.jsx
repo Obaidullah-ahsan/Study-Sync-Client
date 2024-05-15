@@ -69,8 +69,8 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
       <div className="max-w-[350px] border overflow-hidden bg-base-200 dark:bg-gray-800">
         <img
           className="object-cover w-full h-44"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          alt="Article"
+          src={thumbnail}
+          alt="Assignment image"
         />
 
         <div className="p-4 border-b h-40">

@@ -6,7 +6,12 @@ const Footer = () => {
           <div className="lg:flex lg:gap-36">
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6">
-                <h2 className="text-2xl font-bold">Study Sync</h2>
+                <img
+                  className="max-w-40"
+                  src="https://i.ibb.co/Z65Nx2z/black-white-Thunder-logo-20240515-182638-0000-2-removebg-preview.png"
+                  alt=""
+                />
+
                 <p className="max-w-sm mt-2 text-gray-500 dark:text-white">
                   Our platform empowers students to engage in group study
                   assignments seamlessly.
@@ -44,7 +49,9 @@ const Footer = () => {
                   </a>
                 </div>
                 <div>
-                  <h3 className="font-bold uppercase dark:text-white">Social Link</h3>
+                  <h3 className="font-bold uppercase dark:text-white">
+                    Social Link
+                  </h3>
                   <div className="flex mt-3 -mx-2">
                     <a
                       className="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"

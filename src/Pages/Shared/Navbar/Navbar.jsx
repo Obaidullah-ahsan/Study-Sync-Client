@@ -65,7 +65,11 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn px-1 btn-ghost text-xl">Study Sync</a>
+        <img
+          className="max-w-24 md:max-w-32"
+          src="https://i.ibb.co/Z65Nx2z/black-white-Thunder-logo-20240515-182638-0000-2-removebg-preview.png"
+          alt=""
+        />
       </div>
       <div className="justify-end md:w-0 lg:w-[70%] hidden lg:flex">
         <ul className="menu menu-horizontal text-base font-semibold px-1">
