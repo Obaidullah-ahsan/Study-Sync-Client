@@ -8,7 +8,7 @@ const Banner = () => {
         <h1 className="text-3xl md:text-5xl font-semibold text-white">
           Join Us for Online Group <br /> Study Sessions!
         </h1>
-        <p className="text-white">
+        <p className="text-white lg:max-w-lg">
           Step into a world of shared wisdom and collective achievement with our
           online study circle! Discover the transformative power of
           collaborative learning as we come together to conquer academic

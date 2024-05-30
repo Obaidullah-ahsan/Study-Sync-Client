@@ -76,10 +76,10 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
         <div className="p-4 border-b h-40">
           <div>
             <div className="flex justify-between">
-              <p className="text-sm font-semibold flex rounded-lg justify-center items-center text-white min-h-8 h-8 max-w-[85px] w-[85px] bg-[#5FCF80] dark:text-blue-400">
+              <p className="text-sm font-semibold flex rounded-lg justify-center items-center text-black min-h-8 h-8 max-w-[85px] w-[85px] bg-[#77f09b] dark:text-blue-400">
                 Marks : {marks}
               </p>
-              <p className="text-sm font-semibold flex rounded-lg justify-center items-center text-white min-h-8 h-8 max-w-16 w-16 bg-[#5FCF80] dark:text-blue-400">
+              <p className="text-sm font-semibold flex rounded-lg justify-center items-center text-black min-h-8 h-8 max-w-16 w-16 bg-[#6fec94] dark:text-blue-400">
                 {difficulty}
               </p>
             </div>
@@ -95,13 +95,13 @@ const AssignmentsCard = ({ assignment, assignments, setAssignments }) => {
           <div className="flex flex-row gap-3">
             <button
               onClick={() => handleDelete(_id, creatorEmail)}
-              className="btn bg-[#5FCF80] min-h-10 h-10"
+              className="btn bg-[#ff4d4f] min-h-10 h-10"
             >
-              <MdDeleteForever color="red" title="Delete" size={30} />
+              <MdDeleteForever color="white" title="Delete" size={30} />
             </button>
             <Link
               to={`/updateassignments/${_id}`}
-              className="btn bg-[#5FCF80] min-h-10 h-10"
+              className="btn bg-[#1890ff] min-h-10 h-10"
             >
               <CiEdit color="white" title="Update" size={30} />
             </Link>
