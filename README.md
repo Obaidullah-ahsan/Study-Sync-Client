@@ -12,6 +12,8 @@ Study Sync is a web application designed to facilitate online group-study assign
 - **My Submitted/Attempted Assignment Page:-** The My Submitted/Attempted Assignment page provides students with an overview of their submitted or attempted assignments. They can review their submissions, check for feedback, and monitor their progress.
 - **Pending Assignments Page:-** The All Pending Assignments page lists all assignments that are pending submission.
 
+#### Technologies: HTML, CSS3, TailwindCSS, Java-Script, ReactJs, Firebase(Authentication), NodeJs, MongoDB etc.
+
 #### Selected category's name:- assignment_category_0001
 
 #### Website Themes: Online Group-Study assignment
