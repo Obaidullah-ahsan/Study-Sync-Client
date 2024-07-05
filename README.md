@@ -17,3 +17,17 @@ Study Sync is a web application designed to facilitate online group-study assign
 #### Selected category's name:- assignment_category_0001
 
 #### Website Themes: Online Group-Study assignment
+
+## Cloning an React project and running locally
+- git clone https://github.com/YourUserName/YourRepositoryName.git
+- cd YourRepositoryName
+- Delete node_modules folder and package-lock.json file if exists
+
+### Run this following commands
+```bash
+npm install
+# this will create node_modules folder and package-lock.json
+npm run dev
+# it will start your react app
+```
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
